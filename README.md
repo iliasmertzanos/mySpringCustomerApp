@@ -15,6 +15,7 @@ To run the application, follow the steps below:
 4. Run the application: 
    a. Select the root project folder
    b. Right-Click, select Run As > Run On Server
+   c. Note that you will also need to install Apache Tomcat 8 or higher
    
 App description
 ====================================================
