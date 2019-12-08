@@ -15,3 +15,8 @@ To run the application, follow the steps below:
 4. Run the application: 
    a. Select the root project folder
    b. Right-Click, select Run As > Run On Server
+   
+App description
+====================================================
+
+The app offers the user the change to create, delete, update and read customer entities from the database using hibernate and user interfaces (see folder ``/mySpringCustomerApp/WebContent/WEB-INF/view``)
