@@ -11,7 +11,7 @@ To run the application, follow the steps below:
 
 
 1. Install MySQL database
-2. Run the database scripts to create a user and load sample data
+2. Run the database script in the folder `mySpringCustomerApp/src/com/luv2code/sql/` to create a user and load sample data
      - sql-scripts/02-customer-tracker.sql
 3. Open the source code for the appropriate version
 4. Run the application:
