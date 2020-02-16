@@ -24,11 +24,11 @@ public class TestDbServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		// setup connection variables
-		String user = "springstudent";
-		String pass = "springstudent";
+		String user = "root";
+		String pass = "24081983";
 		
-		String jdbcUrl = "jdbc:mysql://localhost:3306/web_customer_tracker?useSSL=false&serverTimezone=UTC";
-		String driver = "com.mysql.cj.jdbc.Driver";
+		String jdbcUrl = "jdbc:mysql://localhost:6703/my_first_db?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true";
+		String driver = "com.mysql.jdbc.Driver";
 		
 		// get connection to database
 		try {
