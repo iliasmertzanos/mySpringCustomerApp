@@ -32,7 +32,11 @@ CREATE TABLE `address` (
   `state` varchar(45) DEFAULT null,
   `city` varchar(45) DEFAULT null,
   `post_code` int(11) DEFAULT NULL ,
-  PRIMARY KEY (`id`)
+  `customer_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `FK_CUSTOMER` 
+  FOREIGN KEY (`customer_id`) 
+  REFERENCES `customer` (`id`) 
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -44,11 +48,11 @@ LOCK TABLES `address` WRITE;
 /*!40000 ALTER TABLE `address` DISABLE KEYS */;
 
 INSERT INTO `address` VALUES 
-	(1,'main street','12','Germany','Hamburg', 'Hamburg',41221),
-	(2,'Luruper Str','34','Germany','Hamburg', 'Hamburg',22547),
-	(3,'Barenfelder Str','56','Germany','Berlin', 'Berlin',65589),
-	(4,'Hauptstr','89','Germany','North Rhein Westfalia', 'Cologne',789445),
-	(5,'London Street','965','Great Britain','London', 'London',41221);
+	(1,'main street','12','Germany','Hamburg', 'Hamburg',41221,1),
+	(2,'Luruper Str','34','Germany','Hamburg', 'Hamburg',22547,2),
+	(3,'Barenfelder Str','56','Germany','Berlin', 'Berlin',65589,3),
+	(4,'Hauptstr','89','Germany','North Rhein Westfalia', 'Cologne',789445,4),
+	(5,'London Street','965','Great Britain','London', 'London',41221,5);
 
 /*!40000 ALTER TABLE `address` ENABLE KEYS */;
 UNLOCK TABLES;

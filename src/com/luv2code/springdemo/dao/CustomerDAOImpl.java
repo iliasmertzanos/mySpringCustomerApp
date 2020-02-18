@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.luv2code.springdemo.entity.Address;
 import com.luv2code.springdemo.entity.Customer;
 
 @Repository
@@ -44,6 +45,17 @@ public class CustomerDAOImpl implements CustomerDAO {
 		
 		// save/upate the customer ... finally LOL
 		currentSession.saveOrUpdate(theCustomer);
+		
+	}
+	
+	@Override
+	public Customer updateCustomer(Customer theCustomer) {
+
+		// get current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		// save/upate the customer ... finally LOL
+		return (Customer)currentSession.merge(theCustomer);
 		
 	}
 
