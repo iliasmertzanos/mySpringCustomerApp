@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.luv2code.springdemo.dao.CustomerDAO;
 import com.luv2code.springdemo.entity.Address;
+import com.luv2code.springdemo.entity.ContactPerson;
 import com.luv2code.springdemo.entity.Customer;
 
 @Service
@@ -67,6 +68,31 @@ public class CustomerServiceImpl implements CustomerService {
 	public List<Address> getAllAddresses(int theId) {
 		return this.customerDAO.getCustomer(theId).getMyAddressesList();
 	}	
+	
+	@Override
+	@Transactional
+	public Customer saveContactToCustomer(ContactPerson myContact, int customerId) {
+		Customer myCustomer=customerDAO.getCustomer(customerId);
+		List<ContactPerson> contactList=customerDAO.getContactList(customerId);
+		
+		if(contactList==null ) {
+			contactList=new ArrayList<ContactPerson>();
+		}		
+		
+		//save customer into customerlist of contact		
+		contactList.add(myContact);		
+		myCustomer.setMyContactList(contactList);
+		
+		return customerDAO.updateCustomer(myCustomer);		
+	}
+	
+	@Override
+	@Transactional
+	public List<ContactPerson> getContactList(int theId){
+		List<ContactPerson> contactList=customerDAO.getContactList(theId);
+		System.out.println(" Contact list was obtained inside CustomerService .... "+contactList);
+		return contactList;
+	}
 	
 }
 

@@ -12,13 +12,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="customer")
-public class Customer {
-
+@Table(name="contact")
+public class ContactPerson {
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
@@ -33,30 +32,22 @@ public class Customer {
 	@Column(name="email")
 	private String email;
 	
-	@OneToMany(mappedBy="customerDetails"
-		, cascade= {CascadeType.DETACH,
+	@ManyToMany(cascade= {CascadeType.DETACH,
 				CascadeType.MERGE,
 				CascadeType.PERSIST,
 				CascadeType.REFRESH},
-		fetch = FetchType.EAGER)	
-	private List<Address> myAddressesList;
-	
-	@ManyToMany(cascade= {CascadeType.DETACH,
-					CascadeType.MERGE,
-					CascadeType.PERSIST,
-					CascadeType.REFRESH},
 				fetch = FetchType.LAZY)
 	@JoinTable(name="customer_contact",
-			joinColumns = @JoinColumn(name="customer_id"),
-			inverseJoinColumns = @JoinColumn(name="contact_id")
+			joinColumns = @JoinColumn(name="contact_id"),
+			inverseJoinColumns = @JoinColumn(name="customer_id")
 			)	
-	private List<ContactPerson> myContactList;
+	private List<Customer> myCustomerList;
 	
-	public Customer() {
+	public ContactPerson() {
 		
 	}
 
-	public Customer(String firstName, String lastName, String email) {
+	public ContactPerson(String firstName, String lastName, String email) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -97,30 +88,17 @@ public class Customer {
 		this.email = email;
 	}
 
-	public List<Address> getMyAddressesList() {
-		return myAddressesList;
+	public List<Customer> getMyCustomerList() {
+		return myCustomerList;
 	}
 
-	public void setMyAddressesList(List<Address> myAddressesList) {
-		this.myAddressesList = myAddressesList;
-	}
-
-	public List<ContactPerson> getMyContactList() {
-		return myContactList;
-	}
-
-	public void setMyContactList(List<ContactPerson> myContactList) {
-		this.myContactList = myContactList;
+	public void setMyCustomerList(List<Customer> myCustomerList) {
+		this.myCustomerList = myCustomerList;
 	}
 
 	@Override
 	public String toString() {
-		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
+		return "Contact Person [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
 	}
-		
+
 }
-
-
-
-
-
